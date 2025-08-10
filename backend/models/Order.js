@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    title: { type: String, required: true },
+    orderNumber: { type: String, required: true, unique: true },
     description: { type: String },
-    completed: { type: Boolean, default: false },
+    completed: { type: String, enum: ['Filled', 'Not Filled'] },
     deliveryDate: { type: Date },
 });
 

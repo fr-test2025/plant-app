@@ -4,9 +4,9 @@ const { getOrders, updateOrder, deleteOrder, addOrder } = require('../controller
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.get('/order', protect, getOrders);
-router.post('/order', protect, addOrder);
-router.delete('/order', protect, deleteOrder);
-router.put('/order', protect, updateOrder);
+router.get('/', protect, getOrders);
+router.post('/', protect, addOrder);
+router.delete('/:id', protect, deleteOrder);
+router.put('/:id', protect, updateOrder);
 
 module.exports = router;
