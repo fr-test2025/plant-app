@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', protect, getPlants);
 router.post('/', protect, addPlant);
-router.delete('/', protect, deletePlant);
-router.put('/', protect, updatePlant);
+router.delete('/:id', protect, deletePlant);
+router.put('/:id', protect, updatePlant);
 
 module.exports = router;
