@@ -9,7 +9,7 @@ const OrderForm = ({ orders, setOrders, editingOrder, setEditingOrder }) => {
   useEffect(() => {
     if (editingOrder) {
       setFormData({
-        orderNumner: editingOrder.orderNumber,
+        orderNumber: editingOrder.orderNumber,
         description: editingOrder.description,
         completed: editingOrder.completed,
         deliveryDate: editingOrder.deliveryDate,

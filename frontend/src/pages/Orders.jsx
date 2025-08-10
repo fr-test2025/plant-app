@@ -10,7 +10,7 @@ const Orders = () => {
   const [editingOrder, setEditingOrder] = useState(null);
 
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchOrders = async () => {
       try {
         const response = await axiosInstance.get('/api/order', {
           headers: { Authorization: `Bearer ${user.token}` },
@@ -21,7 +21,7 @@ const Orders = () => {
       }
     };
 
-    fetchTasks();
+    fetchOrders();
   }, [user]);
 
   return (

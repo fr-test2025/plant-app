@@ -10,7 +10,7 @@ const Plants = () => {
   const [editingPlant, setEditingPlant] = useState(null);
 
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchPlants = async () => {
       try {
         const response = await axiosInstance.get('/api/plant', {
           headers: { Authorization: `Bearer ${user.token}` },
@@ -21,7 +21,7 @@ const Plants = () => {
       }
     };
 
-    fetchTasks();
+    fetchPlants();
   }, [user]);
 
   return (

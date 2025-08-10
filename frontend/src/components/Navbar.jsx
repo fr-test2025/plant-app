@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-green-900 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="text-4xl font-bold">𖤣.𖥧.𖡼.⚘.❀Plant Nursery❀.⚘.𖡼.𖥧.𖤣</Link>
+      <Link to="/" className="border-2  text-4xl font-bold">𖤣.𖥧.𖡼.⚘.❀Plant Nursery❀.⚘.𖡼.𖥧.𖤣</Link>
       <div>
         {user ? (
           <>
