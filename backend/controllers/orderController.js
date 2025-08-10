@@ -9,22 +9,23 @@ const getOrders = async (req,res) => {
 };
 
 const addOrder = async (req, res) => {
-const { userId, title, description, completed, deliveryDate } = req.body;
+const { orderNumber, description, completed, deliveryDate } = req.body;
     try {
-        const order = await Order.create({ userId: req.user.id, title, description, completed, deliveryDate });
+        const order = await Order.create({ userId: req.user.id, orderNumber, description, completed, deliveryDate });
         res.status(201).json(order);
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: error.message });
     }
 };
 
 const updateOrder = async (req,res) => {
-    const { userId, title, description, completed, deliveryDate } = req.body;
+    const { orderNumber, description, completed, deliveryDate } = req.body;
     try {
         const order = await Order.findById(req.params.id);
         if (!order) return res.status(404).json({ message: 'Order not found' });
 
-        order.title = title || order.title;
+        order.orderNumber = orderNumber|| order.orderNumber;
         order.description = description || order.description;
         order.completed = completed ?? order.completed;
         order.deliveryDate = deliveryDate || order.deliveryDate;

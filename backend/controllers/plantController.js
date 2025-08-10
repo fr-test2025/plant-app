@@ -11,9 +11,11 @@ const getPlants = async (req,res) => {
 const addPlant = async (req, res) => {
 const { botanicalName, commonName, stockCount, seasonality, description } = req.body;
     try {
+        console.log(req.body)
         const plant = await Plant.create({ botanicalName, commonName, stockCount, seasonality, description });
         res.status(201).json(plant);
     } catch (error) {
+        console.log(error)
         res.status(500).json({ message: error.message });
     }
 };
