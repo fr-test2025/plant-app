@@ -4,9 +4,9 @@ const { getPlants, updatePlant, deletePlant, addPlant } = require('../controller
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.get('/plant', protect, getPlants);
-router.post('/plant', protect, addPlant);
-router.delete('/plant', protect, deletePlant);
-router.put('/plant', protect, updatePlant);
+router.get('/', protect, getPlants);
+router.post('/', protect, addPlant);
+router.delete('/', protect, deletePlant);
+router.put('/', protect, updatePlant);
 
 module.exports = router;
