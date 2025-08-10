@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import axiosInstance from '../axiosConfig';
-import TaskForm from '../components/TaskForm';
-import TaskList from '../components/TaskList';
+import PlantForm from '../components/PlantForm';
+import PlantList from '../components/PlantList';
 import { useAuth } from '../context/AuthContext';
 
 const Plants = () => {
   const { user } = useAuth();
-  const [tasks, setTasks] = useState([]);
-  const [editingTask, setEditingTask] = useState(null);
+  const [plants, setPlants] = useState([]);
+  const [editingPlant, setEditingPlant] = useState(null);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -15,7 +15,7 @@ const Plants = () => {
         const response = await axiosInstance.get('/api/plant', {
           headers: { Authorization: `Bearer ${user.token}` },
         });
-        setTasks(response.data);
+        setPlants(response.data);
       } catch (error) {
         alert(error);
       }
@@ -26,13 +26,13 @@ const Plants = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <TaskForm
-        tasks={tasks}
-        setTasks={setTasks}
-        editingTask={editingTask}
-        setEditingTask={setEditingTask}
+      <PlantForm
+        plants={plants}
+        setPlants={setPlants}
+        editingPlant={editingPlant}
+        setEditingPlant={setEditingPlant}
       />
-      <TaskList tasks={tasks} setTasks={setTasks} setEditingTask={setEditingTask} />
+      <PlantList plants={plants} setPlants={setPlants} setEditingPlant={setEditingPlant} />
     </div>
   );
 };
