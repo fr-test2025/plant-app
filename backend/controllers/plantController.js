@@ -9,9 +9,9 @@ const getPlants = async (req,res) => {
 };
 
 const addPlant = async (req, res) => {
-const { name, stockCount, seasonality, description } = req.body;
+const { botanicalName, commonName, stockCount, seasonality, description } = req.body;
     try {
-        const plant = await Plant.create({ name, stockCount, seasonality, description });
+        const plant = await Plant.create({ botanicalName, commonName, stockCount, seasonality, description });
         res.status(201).json(plant);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -19,15 +19,16 @@ const { name, stockCount, seasonality, description } = req.body;
 };
 
 const updatePlant = async (req,res) => {
-    const { name, stockCount, seasonality, description } = req.body;
+    const { botanicalName, commonName, stockCount, seasonality, description } = req.body;
     try {
         const plant = await Plant.findById(req.params.id);
         if (!plant) return res.status(404).json({ message: 'Plant not found' });
 
-        plant.name = name || plant.name;
+        plant.botanicalName = botanicalName || plant.botanicalName;
         plant.description = description || plant.description;
         plant.stockCount = stockCount || plant.stockCount;
         plant.seasonality = seasonality || plant.seasonality;
+        plant.commonName = commonName || plant.commonName;
 
         const updatedPlant = await Plant.save();
         res.json(updatedPlant);
