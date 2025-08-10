@@ -30,7 +30,7 @@ const updatePlant = async (req,res) => {
         plant.seasonality = seasonality || plant.seasonality;
         plant.commonName = commonName || plant.commonName;
 
-        const updatedPlant = await Plant.save();
+        const updatedPlant = await plant.save();
         res.json(updatedPlant);
     } catch (error) {
         res.status(500).json({ message: error.message });
