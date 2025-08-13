@@ -1,4 +1,52 @@
 
+
+## Public URL of Project: 
+Live version of dashboard can be accessed at: http://3.107.196.202
+
+Project-specific username and password if we need to access your dashboard:
+
+Use the default credentials: 
+
+username: username@user.com
+
+password: password
+
+
+
+## Jira Dashboard Access:
+
+https://connect-team-zxr8tiyz.atlassian.net/jira/software/projects/EP/boards/34/backlog 
+
+
+## Project Setup
+
+Install NodeJS if not installed: https://nodejs.org/en](https://nodejs.org/en)
+
+### Install dependencies
+```
+npm install
+```
+
+## Running application
+
+Create a file called `.env` in the backend directory with the following contents:
+
+```
+MONGO_URI=xxx
+JWT_SECRET=xxx
+PORT=xxx
+```
+
+### Run in development mode
+```
+npm run dev
+```
+
+### Run normally
+```
+npm start
+```
+
 **Assessment 1 (Total Marks **20**)**
 
 Assignment: **Software requirements analysis and design (**Full-Stack CRUD Application Development with DevOps Practices**)**
