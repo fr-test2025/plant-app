@@ -4,7 +4,7 @@ import axiosInstance from '../axiosConfig';
 
 const PlantForm = ({ plants, setPlants, editingPlant, setEditingPlant }) => {
   const { user } = useAuth();
-  const [formData, setFormData] = useState({ botanicalName: '', commonName: '', seasonality: '', description: '', stockCount: '' });
+  const [formData, setFormData] = useState({ botanicalName: '', commonName: '', seasonality: '', description: '', stockCount: '', price: '',});
 
   useEffect(() => {
     if (editingPlant) {
@@ -14,9 +14,10 @@ const PlantForm = ({ plants, setPlants, editingPlant, setEditingPlant }) => {
         seasonality: editingPlant.seasonality,
         description: editingPlant.description,
         stockCount: editingPlant.stockCount,
+        price: editingPlant.price || '',
       });
     } else {
-      setFormData({ botanicalName: '', commonName: '', seasonality: '', description: '', stockCount: '' });
+      setFormData({ botanicalName: '', commonName: '', seasonality: '', description: '', stockCount: '', price: '',});
     }
   }, [editingPlant]);
 
@@ -35,7 +36,7 @@ const PlantForm = ({ plants, setPlants, editingPlant, setEditingPlant }) => {
         setPlants([...plants, response.data]);
       }
       setEditingPlant(null);
-      setFormData({ botanicalName: '', commonName: '', seasonality: '', description: '', stockCount: '' });
+      setFormData({ botanicalName: '', commonName: '', seasonality: '', description: '', stockCount: '', price: '' });
     } catch (error) {
       alert('Failed to save plant.');
       console.log(error)
@@ -85,6 +86,15 @@ const PlantForm = ({ plants, setPlants, editingPlant, setEditingPlant }) => {
         onChange={(e) => setFormData({ ...formData, stockCount: e.target.value })}
         className="w-full mb-4 p-2 border rounded"
       />
+      <input
+        type="number"
+        placeholder="Price"
+        value={formData.price || ''}
+        min="0"
+        step="1"
+        onChange={(e) => setFormData({ ...formData, price: e.target.value.replace(/\D/g, '') })}
+        className="pl-6 p-2 border rounded w-full"
+      />  
       <button type="submit" className="w-20 bg-green-700 text-white p-2 rounded hover:bg-lime-700">
         {editingPlant ? 'Update' : 'Add'}
       </button>
